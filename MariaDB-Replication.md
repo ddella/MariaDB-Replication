@@ -1,5 +1,4 @@
-﻿
-# MariaDB Replication on Docker
+﻿# MariaDB Replication on Docker
 
 ## Introduction
 

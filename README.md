@@ -6,9 +6,12 @@ In this workshop, I'll demonstrate how to configure a simple HA MariaDB replicat
 The servers are running `MariaDB 10.6.5`. We have one active master `master1`, one passive master `master2`, and a slave, `slave1`, replicating from the active master `master1`. The active and passive masters are set up to replicate Master-Master.
 
 - Master-to-Master replication: `master1` <----> `master2`
-. In a Master-to-Master replication `master2` will be the slave of `master1` and `master1` will be the slave of `master2`. 
+. In a Master-to-Master replication `master2` will be the slave of `master1` and `master1` will be the slave of `master2`.
 - Master-to-Slave replication: 	`master1` ----> `slave1`
-		
+
+![architecture](images/architecture.png)
+
+
         +---------+                  +---------+
         | Master1 | <--------------> | Master2 |
         +---------+                  +---------+

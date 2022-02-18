@@ -11,19 +11,6 @@ The servers are running `MariaDB 10.6.5`. We have one active master `master1`, o
 
 ![architecture](images/architecture.png)
 
-
-        +---------+                  +---------+
-        | Master1 | <--------------> | Master2 |
-        +---------+                  +---------+
-            \
-             \
-              \
-               \
-                V
-           +----------+
-           |  Slave1  |
-           +----------+
-
 ## Requirements:
 
 * Familiarity with basic [MySQL](https://www.mysqltutorial.org/) commands.

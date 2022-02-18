@@ -1,5 +1,7 @@
 ﻿# MariaDB Replication on Docker
 
+![architecture](images/architecture.png)
+
 ### Create a Docker network
 
 ```docker
@@ -30,7 +32,7 @@ chmod -R 1777 databases/{master1,master2,slave1}/mysql
 ```
 
 ### MariaDB: Configuration of `Master1` Server
-Configuration file: `databases/master1/mariadb.conf.d/50-server.cnf`. 
+Configuration file: `databases/master1/mariadb.conf.d/50-server.cnf`.
 
 ```nginx
 #
@@ -53,7 +55,7 @@ auto_increment_offset=1
 ```
 
 ### MariaDB: Configuration of `Master2` Server
-Configuration file: `databases/master2/mariadb.conf.d/50-server.cnf`. 
+Configuration file: `databases/master2/mariadb.conf.d/50-server.cnf`.
 
 ```nginx
 #
@@ -76,7 +78,7 @@ auto_increment_offset=1
 ```
 
 ### MariaDB: Configuration of `Slave1` Server
-Configuration file: `databases/slave1/mariadb.conf.d/50-server.cnf`. 
+Configuration file: `databases/slave1/mariadb.conf.d/50-server.cnf`.
 
 ```nginx
 #
@@ -243,7 +245,3 @@ Nice and useful links.
 This project is licensed under the [MIT license](LICENSE).
 
 [*^ back to top*](#Maria-DB-Replication-on-Docker)
-
-
-
-

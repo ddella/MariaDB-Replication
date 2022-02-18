@@ -1,5 +1,7 @@
 ﻿# MariaDB Replication on Docker
 
+![architecture](images/architecture.png)
+
 ## Prepare the workshop
 
 ### Create a Docker network
@@ -204,7 +206,7 @@ The client instances will be terminated as soon as you type `exit` from the cons
 ### Start `Client1`
 
 1. Open a `terminal`or `shell` and name it `Client 1`.
-2. Start an instance of MariaDB in interactive mode and run the `mysql` command line interface against server `master1`. All the commands entered in this window will be executed on server `master1`. 
+2. Start an instance of MariaDB in interactive mode and run the `mysql` command line interface against server `master1`. All the commands entered in this window will be executed on server `master1`.
 ```console
 docker run -it --network MariaDB --rm --name client1 --hostname client1 mariadb mysql --prompt="\u@\h:[\d]>\_" -h master1 -u root -p
 ```
@@ -212,7 +214,7 @@ docker run -it --network MariaDB --rm --name client1 --hostname client1 mariadb 
 ### Start `Client2`
 
 1. Open a `terminal`or `shell` and name it `Client 2`.
-2. Start an instance of MariaDB in interactive mode and run the `mysql` command line interface against server `master2`. All the commands entered in this window will be executed on server `master2`. 
+2. Start an instance of MariaDB in interactive mode and run the `mysql` command line interface against server `master2`. All the commands entered in this window will be executed on server `master2`.
 ```console
 docker run -it --network MariaDB --rm --name client2 --hostname client2 mariadb mysql --prompt="\u@\h:[\d]>\_" -h master2 -u root -p
 ```
@@ -220,7 +222,7 @@ docker run -it --network MariaDB --rm --name client2 --hostname client2 mariadb 
 ### Start `Client3`
 
 1. Open a `terminal`or `shell` and name it `Client 3`.
-2. Start an instance of MariaDB in interactive mode and run the `mysql` command line interface against server `slave1`.  All the commands entered in this window will be executed on server `slave1`. 
+2. Start an instance of MariaDB in interactive mode and run the `mysql` command line interface against server `slave1`.  All the commands entered in this window will be executed on server `slave1`.
 ```console
 docker run -it --network MariaDB --rm --name client3 --hostname client3 mariadb mysql --prompt="\u@\h:[\d]>\_" -h slave1 -u root -p
 ```
@@ -319,7 +321,7 @@ If it's **not successful**, you will get the following error message:
 		ERROR 1045 (28000): Access denied for user 'repl_master1'@'172.31.1.11' (using password: YES)
 
 If **successful**, you will get a prompt like this one:
-	
+
 	Welcome to the MariaDB monitor.  Commands end with ; or \g.
 	Your MariaDB connection id is 7
 	Server version: 10.6.5-MariaDB-1:10.6.5+maria~focal-log mariadb.org binary distribution
@@ -350,7 +352,7 @@ If it's **not successful**, you will get the following error message:
 		ERROR 1045 (28000): Access denied for user 'repl_master2'@'172.31.1.12' (using password: YES)
 
 If **successful**, you will get a prompt like this one:
-	
+
 	Welcome to the MariaDB monitor.  Commands end with ; or \g.
 	Your MariaDB connection id is 5
 	Server version: 10.6.5-MariaDB-1:10.6.5+maria~focal-log mariadb.org binary distribution
@@ -381,7 +383,7 @@ If it's **not successful**, you will get the following error message:
 		ERROR 1045 (28000): Access denied for user 'repl_slave1'@'172.31.1.13' (using password: YES)
 
 If **successful**, you will get a prompt like this one:
-	
+
 	Welcome to the MariaDB monitor.  Commands end with ; or \g.
 	Your MariaDB connection id is 5
 	Server version: 10.6.5-MariaDB-1:10.6.5+maria~focal-log mariadb.org binary distribution
@@ -482,10 +484,10 @@ SHOW SLAVE HOSTS;
 		|        10 | 172.31.1.13 | 3306 |         1 |
 		+-----------+-------------+------+-----------+
 		1 row in set (0.001 sec)
-	
+
 ### Configure identity of `master2` on slave `master1`
 
-This will start the replication from `master2` and `master1`. 
+This will start the replication from `master2` and `master1`.
 `master1` <--- `master2`
 
 1. The commands in this section are executed on `master1` **CLI**. The prompt will be`root@master1:[(none)]>`.
@@ -541,10 +543,10 @@ SHOW SLAVE HOSTS;
 	|         1 | 172.31.1.11 | 3306 |         2 |
 	+-----------+-------------+------+-----------+
 	1 row in set (0.001 sec)
-	
+
 ### Configure identity of `master1` on slave `master2`
 
-This will start the replication from `master1` and `master2`. 
+This will start the replication from `master1` and `master2`.
 `master1` ---> `master2`
 
 1. The commands in this section are executed on `master2` **CLI**. The prompt will be`root@master2:[(none)]>`.
@@ -676,7 +678,7 @@ You see that the database, `Created_on_Master2_10`, created on `master2` got rep
 	6 rows in set (0.002 sec)
 
 ## Troubleshooting
-To execute any of the commands below, you need to open a `terminal`or a `shell`. 
+To execute any of the commands below, you need to open a `terminal`or a `shell`.
 
 ```sql
 SHOW MASTER STATUS\G
@@ -715,7 +717,7 @@ This execute the command supplied to `-e`. If you pass the `-p` without the pass
 ```Docker
  docker run -it --network MariaDB --rm mariadb mariadb -h master1 -u root -pmaster1 -e "SHOW ALL SLAVES STATUS\G" | egrep "(Slave_IO_Running|Slave_SQL_Running)"
  ```
- 
+
 ### Use those commands with care
 
 On masters and slaves:
